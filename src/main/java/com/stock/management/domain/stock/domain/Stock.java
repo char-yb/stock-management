@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Version;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,13 +23,18 @@ public class Stock {
 
 	private Long quantity;
 
+	@Version
+	private Integer version;
+
 	@Builder(access = AccessLevel.PRIVATE)
 	private Stock (
 		Long productId,
 		Long quantity
+		// Long version
 	) {
 		this.productId = productId;
 		this.quantity = quantity;
+		// this.version = version;
 	}
 
 	public static Stock createStock(
