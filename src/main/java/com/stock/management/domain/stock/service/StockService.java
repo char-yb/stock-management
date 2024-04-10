@@ -16,6 +16,14 @@ public class StockService {
 	private final StockRepository stockRepository;
 
 	// Transactional 어노테이션의 동작방식으로, synchronized 사용 시 만든 클래스를 래핑한 클래스로 새로 생성하여 실행하게 된다.
+
+	/**
+	 * Java의 synchronized는 하나의 프로세스안에서만 보장이 된다.
+	 * synchronized 문제점으로는 만약, 서버가 여러 대 존재하는 경우에서 발생된다.
+	 * 한대의 서버가 데이터 접근을 위한 프로세스를 실행중, 다른 서버가 데이터 접근을 할 경우 문제가 발생된다. (Race Condition)
+	 * @param stockId
+	 * @param quantity
+	 */
 	public synchronized void decreaseQuantity(Long stockId, Long quantity) {
 		/** 재고 감소 요구사항
 		 * Stock 조회
