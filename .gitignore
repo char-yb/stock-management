@@ -38,3 +38,6 @@ out/
 
 ### ENV ###
 .env
+
+### src ###
+/src/test/resources/application-*.yml

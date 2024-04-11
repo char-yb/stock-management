@@ -16,6 +16,8 @@ import org.springframework.test.context.ActiveProfiles;
 import com.stock.management.domain.stock.domain.Stock;
 import com.stock.management.domain.stock.repository.StockRepository;
 
+import jakarta.persistence.EntityManager;
+
 @SpringBootTest
 @ActiveProfiles("test")
 class OptimisticLockStockFacadeTest {

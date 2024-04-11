@@ -24,17 +24,15 @@ public class Stock {
 	private Long quantity;
 
 	@Version
-	private Integer version;
+	private Long version;
 
 	@Builder(access = AccessLevel.PRIVATE)
 	private Stock (
 		Long productId,
 		Long quantity
-		// Long version
 	) {
 		this.productId = productId;
 		this.quantity = quantity;
-		// this.version = version;
 	}
 
 	public static Stock createStock(
