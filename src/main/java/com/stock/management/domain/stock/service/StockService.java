@@ -1,6 +1,7 @@
 package com.stock.management.domain.stock.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.stock.management.domain.stock.domain.Stock;
@@ -24,7 +25,13 @@ public class StockService {
 	 * @param stockId
 	 * @param quantity
 	 */
-	public synchronized void decreaseQuantity(Long stockId, Long quantity) {
+	/**
+	 * named lock 시에는 부모의 트랜잭션과 별도로 실행되어야 하기에 Propagation 을 변경해줘야한다.
+	 * @param stockId
+	 * @param quantity
+	 */
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public void decreaseQuantity(Long stockId, Long quantity) {
 		/** 재고 감소 요구사항
 		 * Stock 조회
 		 * 재고를 감소한 뒤

@@ -14,6 +14,11 @@ spring:
     url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${DB_NAME}
     username: ${MYSQL_USERNAME}
     password: ${MYSQL_PASSWORD}
+#    ?? ??? ??? ????? connection pool size ??
+    hikari:
+      connection-timeout: 6000
+      maximum-pool-size: 40
+#      max-lifetime: 30000
 
 logging:
   level:
